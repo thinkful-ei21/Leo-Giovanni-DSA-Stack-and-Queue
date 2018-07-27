@@ -1,6 +1,7 @@
 'use strict';
 
 const Stack = require('./stack');
+const Queue = require('./queue');
 const util = require('util');
 
 function main(){
@@ -24,17 +25,68 @@ function main(){
 
   //console.log(matchingPar(`("({})")`)); 
 
-  let numberStack =new Stack();
+  // let numberStack =new Stack();
 
-  numberStack.push(1);
-  numberStack.push(3);
-  numberStack.push(5);
-  numberStack.push(2);
+  // numberStack.push(1);
+  // numberStack.push(3);
+  // numberStack.push(5);
+  // numberStack.push(2);
 
-  display(sortStack(numberStack));
+  // display(sortStack(numberStack));
+
+  let startreckQ = new Queue();
+  startreckQ.enqueue('Kirk');
+  startreckQ.enqueue('Spock');
+  startreckQ.enqueue('Uhura');
+  startreckQ.enqueue('Sulu');
+  startreckQ.enqueue('Checkov');
+ 
+  // console.log(peekQ(startreckQ));
+  removeQ(startreckQ,'Spock');
+  displayQ(startreckQ);
+  // console.log(util.inspect(startreckQ, false, null));
+
+  
+
 }
 
 main();
+
+function peekQ(queue){
+  return queue.first === null? null : queue.first.element;
+}
+
+function displayQ(queue){
+  let curr = queue.first;
+  let str = '';
+  while(curr){
+    str += curr.element + ', ';
+    curr= curr.prev;
+  }
+  console.log('stack= '+str);
+
+}
+
+function removeQ(queue, element){
+ 
+  if(queue.first === null){return;}
+  
+  else if(queue.first.element === element){
+    queue.first = queue.first.prev;
+  }
+  else if(queue.last.element === element){
+    queue.last = queue.last.next;
+  }
+  else {
+    let curr = queue.first;
+    
+    while(curr.element !== element){
+      curr = curr.prev;
+    }
+    curr.next.prev = curr.prev;
+    curr.prev.next = curr.next;
+  }
+}
 
 
 function peek(list){
