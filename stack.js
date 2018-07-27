@@ -1,13 +1,32 @@
 
 class Node {
-  constructor(element)
+  constructor(element,next)
   {
     this.element = element;
-    this.next = null;
+    this.next = next;
   }
 }
 
 class Stack {
+  constructor()
+  {
+    this.top = null;
+  }
+
+  push(element){
+    if(this.top === null){
+      this.top= new Node(element, null);
+      return this.top;
+    }
+    const node = new Node(element, this.top);
+    this.top = node;
+  }
+
+  pop(){
+    const node = this.top;
+    this.top= node.next;
+    return node.element;
+  }
 
 }
 
