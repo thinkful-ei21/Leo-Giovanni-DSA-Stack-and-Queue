@@ -35,7 +35,7 @@ function main(){
 
   // display(sortStack(numberStack));
 
-  let startreckQ = new Queue2();
+  let startreckQ = new Queue();
   startreckQ.enqueue('Kirk');
   startreckQ.enqueue('Spock');
   startreckQ.enqueue('Uhura');
@@ -48,12 +48,37 @@ function main(){
   // displayQ(startreckQ);
   //console.log(util.inspect(startreckQ, false, null));
 
-  console.log(startreckQ.dequeue());
-  
 
+  // let startreckQ2 = new Queue2();
+  // startreckQ2.enqueue('Kirk');
+  // startreckQ2.enqueue('Spock');
+  // startreckQ2.enqueue('Uhura');
+  // startreckQ2.enqueue('Sulu');
+  // startreckQ2.enqueue('Checkov');
+  // console.log(startreckQ2.dequeue());
+  
+  oBank(startreckQ);
 }
 
 main();
+
+
+function oBank(queue){
+  while(queue.first !== null){
+    let customer = queue.dequeue().element;
+    let roll = Math.random();
+    if(roll < .25){
+      console.log(customer, ' was sent to the back of the line');
+      queue.enqueue(customer);
+    }
+    else{
+      console.log(customer, ' has been served');
+    }
+
+  }
+ 
+}
+
 
 function peekQ(queue){
   return queue.first === null? null : queue.first.element;

@@ -21,13 +21,13 @@ class Queue {
     if(this.first === null){
       let node = new Node(element, null, null);
       this.first = node;
-      this.last = node;
+
     }
-    // else if(this.last === null){
-    //     let node = new Node(element,this.first, null);
-    //     this.first.prev = node
-    //     this.last = node;
-    // }
+    else if(this.last === null){
+        let node = new Node(element,this.first, null);
+        this.first.prev = node;
+        this.last = node;
+    }
 
     else{
       let node = new Node(element,this.last, null);     
@@ -42,7 +42,8 @@ class Queue {
     }
     else{
       let node = this.first;
-      this.first = node.next;
+      this.first = node.prev;
+      
       return node;
     }
   }
