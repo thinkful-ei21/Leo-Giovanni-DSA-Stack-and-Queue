@@ -1,3 +1,4 @@
+'use strict';
 
 class Node {
   constructor(element,next)
@@ -24,8 +25,13 @@ class Stack {
 
   pop(){
     const node = this.top;
-    this.top= node.next;
-    return node.element;
+    if(this.top === null){
+      return node;
+    }
+    else{
+      this.top= node.next;
+      return node.element;
+    }
   }
 
 }

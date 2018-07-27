@@ -10,7 +10,7 @@ class Node {
   }
 }
   
-class Stack {
+class Queue {
   constructor()
   {
     this.first = null;
@@ -53,4 +53,4 @@ class Stack {
   
   
   
-module.exports= Stack;
+module.exports= Queue;

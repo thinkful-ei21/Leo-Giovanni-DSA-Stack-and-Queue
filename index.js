@@ -2,6 +2,7 @@
 
 const Stack = require('./stack');
 const Queue = require('./queue');
+const Queue2 = require('./queue2');
 const util = require('util');
 
 function main(){
@@ -34,18 +35,20 @@ function main(){
 
   // display(sortStack(numberStack));
 
-  let startreckQ = new Queue();
+  let startreckQ = new Queue2();
   startreckQ.enqueue('Kirk');
   startreckQ.enqueue('Spock');
   startreckQ.enqueue('Uhura');
   startreckQ.enqueue('Sulu');
   startreckQ.enqueue('Checkov');
  
-  // console.log(peekQ(startreckQ));
-  removeQ(startreckQ,'Spock');
-  displayQ(startreckQ);
-  // console.log(util.inspect(startreckQ, false, null));
 
+  // console.log(peekQ(startreckQ));
+  // removeQ(startreckQ,'Spock');
+  // displayQ(startreckQ);
+  //console.log(util.inspect(startreckQ, false, null));
+
+  console.log(startreckQ.dequeue());
   
 
 }
