@@ -22,8 +22,16 @@ function main(){
   // console.log(is_palindrome('1001'));
   // console.log(is_palindrome('Tauhida'));
 
-  console.log(matchingPar(`("({})")`)); 
+  //console.log(matchingPar(`("({})")`)); 
 
+  let numberStack =new Stack();
+
+  numberStack.push(1);
+  numberStack.push(3);
+  numberStack.push(5);
+  numberStack.push(2);
+
+  display(sortStack(numberStack));
 }
 
 main();
@@ -114,3 +122,24 @@ function matchingPar(str){
   return stack.top === null? true : new Error(`extra open paren at index ${stack.top.element.index}`);
 }
 
+
+function sortStack(inputStack){
+  let tempStack= new Stack();
+  let tempVar;
+ 
+  while (peek(inputStack) !== null){
+    tempVar= peek(inputStack);
+    inputStack.pop();
+    while(peek(tempStack)!== null && peek(tempStack) < tempVar){
+      inputStack.push(peek(tempStack));
+      tempStack.pop();
+    }
+    tempStack.push(tempVar);
+  }
+  return tempStack;
+}
+function peek(list){
+  if(list.top){
+    return(list.top.element);}
+  else{return null;}
+}
